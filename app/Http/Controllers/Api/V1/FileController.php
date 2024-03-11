@@ -1,7 +1,7 @@
 <?php
 
-namespace App\Http\Controllers;
-
+namespace App\Http\Controllers\Api\V1;
+use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreFileRequest;
 use App\Http\Requests\UpdateFileRequest;
 use App\Models\File;
@@ -13,7 +13,7 @@ class FileController extends Controller
      */
     public function index()
     {
-        //
+        return File::all();
     }
 
     /**
