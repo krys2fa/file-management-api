@@ -24,7 +24,6 @@ class FileController extends Controller
      */
     public function store(StoreFileRequest $request)
     {
-        // $file = File::create($request->validated());
 
         Storage::disk('uploads')->makeDirectory('');
 
