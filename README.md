@@ -32,6 +32,10 @@ To get a local copy up and running follow these simple example steps.
 - Run `php artisan serve` to start the development server.
 - Visit the URL at http://localhost:8000/ to test the API.
 
+### Documentation
+API documentation was done using POSTMAN and can be found [here.](public/documentation/File_Management_API.postman_collection.json)
+
+
 ## Author
 
 👤 **Christopher Amanor**
