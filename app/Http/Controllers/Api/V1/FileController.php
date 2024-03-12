@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Api\V1;
+use App\Http\Resources\FileResource;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreFileRequest;
 use App\Http\Requests\UpdateFileRequest;
@@ -13,7 +14,7 @@ class FileController extends Controller
      */
     public function index()
     {
-        return File::all();
+        return FileResource::collection(File::all());
     }
 
     /**
@@ -37,7 +38,7 @@ class FileController extends Controller
      */
     public function show(File $file)
     {
-        //
+        return FileResource::make($file);
     }
 
     /**
