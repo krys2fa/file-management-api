@@ -1,11 +1,13 @@
 <?php
 
 namespace App\Http\Controllers\Api\V1;
+use Illuminate\Support\Facades\Storage;
 use App\Http\Resources\FileResource;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreFileRequest;
 use App\Http\Requests\UpdateFileRequest;
 use App\Models\File;
+
 
 class FileController extends Controller
 {
@@ -22,7 +24,24 @@ class FileController extends Controller
      */
     public function store(StoreFileRequest $request)
     {
-        $file = File::create($request->validated());
+        // $file = File::create($request->validated());
+
+        Storage::disk('uploads')->makeDirectory('');
+
+        $file = $request->file('file');
+
+        $filename = uniqid().'.'.$file->getClientOriginalExtension();
+
+        $file->storeAs('uploads', $filename);
+
+        $filePath = Storage::disk('uploads')->path($filename);
+
+        $file = File::create([
+            'name' => $request->validated()['name'],
+            'path' => $filePath,
+            'type' => $request->validated()['type'],
+        ]);
+
         return FileResource::make($file);
     }
 

@@ -17,6 +17,8 @@ class FileResource extends JsonResource
         return [
             'id'  => $this->id,
             'name' => $this->name,
+            'type' => $this->type,
+            'path' => $this->path,
             'is_uploaded' => (bool) $this->is_uploaded
         ];
     }
